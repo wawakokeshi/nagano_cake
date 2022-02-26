@@ -229,10 +229,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.4)
   byebug
   capybara (>= 3.26)
-<<<<<<< HEAD
   devise
-=======
->>>>>>> 948d3b8c146a0769778e221dbd445df00270111f
   image_processing (~> 1.2)
   jbuilder (~> 2.7)
   listen (~> 3.3)
