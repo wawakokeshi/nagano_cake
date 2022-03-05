@@ -22,7 +22,7 @@ namespace :public do
  resources :items, only: [:index, :show]
  resources :cart_items, only: [:index, :create, :destroy, :update]
  resources :customers, only: [:index, :show, :edit, :update]
- resources :orders, only: [:show, :create, :index]
+ resources :orders, only: [:new, :show, :create, :index]
  resources :addresses, except: [:show]
 end
  

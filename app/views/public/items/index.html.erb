@@ -1,0 +1,6 @@
+<h2>商品一覧</h2>(全??件)
+<% @items.each do |items| %>
+ <% items.name %>
+ <% items.price %>
+<% end %>
+<%= pagenate items %>
