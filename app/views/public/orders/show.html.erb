@@ -1,0 +1,69 @@
+<h2>注文履歴詳細</h2>
+
+注文情報
+<table>
+ <tbody>
+  <%# @orders.each do |order| %>
+  <tr>
+   <td>注文日</td>
+   <td><%#= order.created_at %></td>
+  </tr>
+  <tr>
+   <td>配送先</td>
+   <td><%#= order.address %></td>
+  </tr>
+  <tr>
+   <td>支払方法</td>
+   <td><%#= order.方法 %></td>
+  </tr>
+  <tr>
+   <td>ステータス</td>
+   <td><%#= order.??? %></td>
+  </tr>
+ </tbody>
+</table>
+
+請求情報
+<table>
+ <tbody>
+  <%# @orders.each do |order| %>
+  <tr>
+   <td>商品合計</td>
+   <td><%#= order.created_at %></td>
+  </tr>
+  <tr>
+   <td>配送料</td>
+   <td><%#= order.address %></td>
+  </tr>
+  <tr>
+   <td>ご請求額</td>
+   <td><%#= order.方法 %></td>
+  </tr>
+ </tbody>
+</table>
+
+注文内容
+<table>
+   <thead>
+   <tr>
+    <th>商品</th>
+    <th>単価(税込)</th>
+    <th>個数</th>
+    <th>小計</th>
+   </tr>
+   </thead>
+
+   <tbody>
+    <%# @items.each do |item| %>
+    <tr>
+     <td><%#= item.id %></td>
+     <td><%#= item.name %></td>
+     <td><%#= item.price %></td>
+     <td><%#= item.genre_id %></td>
+    </tr>
+    <%# end %>
+   </tbody>
+   
+   <tfoot>
+   </tfoot>
+  </table>
