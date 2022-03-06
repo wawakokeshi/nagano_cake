@@ -2,9 +2,10 @@
 
 <h4>会員の方はこちらからログイン</h4>
 
-<%= form_with model : @customer, url: customer_session_path, local: true do |f| %>
+<%= form_with model: @customer, url: customer_session_path, local: true do |f| %>
+
   <div class="field">
-    <%= f.label :email %><br />
+    <%= f.label :email %><br>
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
@@ -28,4 +29,4 @@
 <%= render "public/shared/links" %>
 
 <h4>会員登録がお済みでない方</h4>
-<a href = /sign_up>こちら</a>から新規登録を行ってください。
+こちらから新規登録を行ってください。

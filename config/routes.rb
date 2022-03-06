@@ -19,6 +19,7 @@ end
 
 namespace :public do
  root to: 'homes#top'
+ get '/about' => 'homes#about'
  resources :items, only: [:index, :show]
  resources :cart_items, only: [:index, :create, :destroy, :update]
  resources :customers, only: [:index, :show, :edit, :update]
