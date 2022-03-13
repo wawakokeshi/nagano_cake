@@ -24,13 +24,13 @@
             <ul class="navbar-nav ml-auto">
             <% if customer_signed_in? %>
             <li class="nav-item">
-              <%= link_to 'マイページ', customer_path(current_user.id), class: 'nav-link text-dark' %>
+              <%= link_to 'マイページ', public_customer_path(current_customer.id), class: 'nav-link text-dark' %>
             </li>
             <li class="nav-item">
-              <%= link_to '商品一覧', public_items, class: 'nav-link text-dark' %>
+              <%= link_to '商品一覧', public_items_path, class: 'nav-link text-dark' %>
             </li>
             <li class="nav-item">
-              <%= link_to 'カート', public_cart_items, class: 'nav-link text-dark' %>
+              <%= link_to 'カート', public_cart_items_path, class: 'nav-link text-dark' %>
             </li>
             <li class="nav-item">
               <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'nav-link text-dark' %>
