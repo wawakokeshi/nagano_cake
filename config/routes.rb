@@ -19,7 +19,7 @@ namespace :admin do
  resources :orders_details, only: [:update]
 end
 
-namespace :public do
+scope module: :public do
  root to: 'homes#top'
  get '/about' => 'homes#about', as: 'about'
  resources :items, only: [:index, :show]
