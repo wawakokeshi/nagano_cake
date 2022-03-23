@@ -10,7 +10,13 @@ def edit
 end
 
 def create
- @address = Address.find(params[:id])
+ @address = Address.new(address_params)
+ if @address.save
+  redirect_to addresses_path
+ else
+  @addresses = Address.all
+  render :index
+ end
 end
 
 def update
@@ -19,6 +25,10 @@ end
 
 def destroy
  @address = Address.find(params[:id])
+end
+
+def address_params
+ params.require(:address).permit(:name,:postal_code,:address)
 end
 
 end
