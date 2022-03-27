@@ -25,6 +25,7 @@ scope module: :public do
  resources :items, only: [:index, :show]
  resources :cart_items, only: [:index, :create, :destroy, :update]
  resources :customers, only: [:index, :show, :edit, :update]
+ get '/customers/current_customer/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
  resources :orders, only: [:new, :show, :create, :index]
  resources :addresses, except: [:show]
 end
