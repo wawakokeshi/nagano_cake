@@ -1,3 +1,3 @@
 class CartItem < ApplicationRecord
-  belongs_to :
+  belongs_to :customer
 end
