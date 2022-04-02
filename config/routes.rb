@@ -8,8 +8,6 @@ Rails.application.routes.draw do
   sessions: 'public/sessions'
 }
 
-#root to: 'public/homes#top'
-
 namespace :admin do
  root to: 'homes#top'
  resources :items, except: [:destroy]

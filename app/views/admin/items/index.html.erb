@@ -12,15 +12,15 @@
    </thead>
 
    <tbody>
-    <%# @items.each do |item| %>
+    <% @items.each do |item| %>
     <tr>
-     <td><%#= item.id %></td>
-     <td><%#= item.name %></td>
-     <td><%#= item.price %></td>
-     <td><%#= item.genre_id %></td>
+     <td><%= item.id %></td>
+     <td><%= item.name %></td>
+     <td><%= item.price %></td>
+     <td><%= item.genre_id %></td>
      <td>ステータス（保留）</td>
     </tr>
-    <%# end %>
+    <% end %>
    </tbody>
    
    <tfoot>
