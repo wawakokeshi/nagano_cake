@@ -9,14 +9,14 @@
   </tr>   
  </thead>
  <tbody>
-  <%# @customers.each do |order| %>
+  <% @customers.each do |customer| %>
   <tr>
-   <td><%#= order_detail.id %></td>
-   <td><%#= order_detail.name %></td>
-   <td><%#= order_detail.e-mail %></td>
-   <td><%#= order_detail.??? %></td>
+   <td><%= customer.id %></td>
+   <td><%= customer.last_name %><%= customer.first_name %></td>
+   <td><%= customer.email %></td>
+   <td><%= customer.is_active %></td>
   </tr>
-  <%# end %>
+  <% end %>
  </tbody>
 </table>
 
