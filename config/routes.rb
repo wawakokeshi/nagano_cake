@@ -11,13 +11,13 @@ Rails.application.routes.draw do
 namespace :admin do
  root to: 'homes#top'
  resources :items, except: [:destroy]
- post 'items/new' => 'items#create'
+ #post 'items/new' => 'items#create'
  #patch 'items/:id/edit' => 'items#update'
  #put 'items/:id' => 'items#update'
  resources :genres, only: [:index, :create, :edit, :update]
  resources :customers, only: [:index, :show, :edit, :update]
  resources :orders, only: [:show, :update]
- resources :orders_details, only: [:update]
+ resources :orders_details, only: [:index, :update]
 end
 
 scope module: :public do

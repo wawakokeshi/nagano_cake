@@ -1,4 +1,17 @@
 <h2>注文情報入力</h2>
 <h4>支払方法<h4>
+<%= form_with model: @order, local:true do |f| %>
+ <%= f.radio_button :payment_method, :クレジットカード %>
+ <%= f.label "クレジットカード" %><br>
+ <%= f.radio_button :payment_method, :銀行振込 %>
+ <%= f.label "銀行振込" %><br>
 <h4>お届け先</h4>
+<%= f.radio_button :payment_method, :クレジットカード %>
+ <%= f.label "クレジットカード" %><br>
+ <%= f.radio_button :payment_method, :銀行振込 %>
+ <%= f.label "銀行振込" %><br>
+ 
+<% end %>
+
+
 <%#= link_to "確認画面へ進む",%>

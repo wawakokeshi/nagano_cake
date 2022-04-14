@@ -1,6 +1,11 @@
 <h2>商品一覧</h2>(全??件)
-<% @items.each do |items| %>
- <% items.name %>
- <% items.price %>
-<% end %>
-<%= paginate @items %>
+
+<table>
+ <% @items.each do |item| %>
+  <tr>
+   <td><%= link_to item.name, item_path(item.id) %></td>
+   <td><%= item.price %></td>
+  </tr> 
+ <% end %>
+</table>
+<%#= paginate @items %>
