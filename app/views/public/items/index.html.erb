@@ -1,6 +1,9 @@
-<h2>商品一覧</h2>(全??件)
+<div class="container">
+  <div class="col-sm-12 mt-3">
+   
+   <span class = "h2">商品一覧</span>(全??件)
 
-<table>
+<table></table>
  <% @items.each do |item| %>
   <tr>
    <td><%= link_to item.name, item_path(item.id) %></td>
@@ -9,3 +12,6 @@
  <% end %>
 </table>
 <%#= paginate @items %>
+  </div>
+ </div>
+</div>

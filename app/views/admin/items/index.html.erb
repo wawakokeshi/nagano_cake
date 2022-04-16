@@ -1,28 +1,32 @@
-<h2>商品一覧</h2>
+<div class="container">
+  <div class="col-sm-12 mt-3">
+   <span class = "h3 bg-secondary text-dark">商品一覧</span>
 
- <table>
-   <thead>
-   <tr>
-    <th>商品ID</th>
-    <th>商品名</th>
-    <th>税抜価格</th>
-    <th>ジャンル</th>
-    <th>ステータス</th>
-   </tr>
-   </thead>
+    <table class = "table table-borderless">
+     <thead class = "thead-light">
+      <tr>
+       <td>商品ID</td>
+       <td>商品名</td>
+       <td>税抜価格</td>
+       <td>ジャンル</td>
+       <td>ステータス</td>
+      </tr>
+     </thead>
 
-   <tbody>
-    <% @items.each do |item| %>
-    <tr>
-     <td><%= item.id %></td>
-     <td><%= link_to item.name, admin_item_path(item.id) %></td>
-     <td><%= item.price %></td>
-     <td><%= item.genre_id %></td>
-     <td>ステータス（保留）</td>
-    </tr>
-    <% end %>
-   </tbody>
+     <tbody>
+      <% @items.each do |item| %>
+      <tr>
+       <td><%= item.id %></td>
+       <td><%= link_to item.name, admin_item_path(item.id) %></td>
+       <td><%= item.price %></td>
+       <td><%= item.genre_id %></td>
+       <td>ステータス（保留）</td>
+      </tr>
+      <% end %>
+     </tbody>
 
-   <tfoot>
-   </tfoot>
-  </table>
+     <tfoot>
+     </tfoot>
+    </table>
+  </div>
+ </div>
