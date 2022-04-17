@@ -1,36 +1,59 @@
 <div class="container">
+ <div class="row">
   <div class="col-sm-12 mt-3">
-   <span class = "h3 bg-secondary text-dark">ログイン</span>
-
-<h4>会員の方はこちらからログイン</h4>
-
+   <span class = "h5 text-dark">ログイン</span>
+  </div>
+ </div>
+ 
+ <div class="row">
+  <div class="col-sm-12 mt-5">
+   <span class = "h5 text-dark">　会員の方はこちらからログイン</span>
+  </div>
+ </div>
+ 
 <%= form_with model: @customer, url: customer_session_path, method: :create, local: true do |f| %>
-
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+ <div class="row">
+  <div class="col-3"></div>
+   <div class="col-2 mt-auto mx-left" style="width: 200px;">
+    <%= f.label :email,  "メールアドレス" %>
+   </div>
+   <div class="col-4 mx-left" style="width: 200px;">
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+   </div>
   </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+ <br>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "ログイン" %>
+ <div class="row">
+  <div class="col-3"></div>
+  <div class="col-2 mt-auto mx-left">
+    <%= f.label :password, "パスワード" %>
   </div>
+  <div class="col-4 mx-left">
+    <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
+  </div>
+ </div>
+
+<br>
+
+ <div class="row">
+  <div class="col-3"></div>
+  <div class="col-2"></div>
+  <div class="col-2 mx-left"><%= f.submit "ログイン", class: "btn btn-primary btn-sm btn-block mt-2 mb-2" %></div>
+ </div>
 <% end %>
 
-<%= render "public/shared/links" %>
+<%#= render "public/shared/links" %>
 
-<h4>会員登録がお済みでない方</h4>
-こちらから新規登録を行ってください。
+ <div class="row">
+  <div class="col-sm-12 mt-5">
+   <span class = "h5 text-dark">　会員登録がお済みでない方</span>
+  </div>
+ </div>
+ <div class="row">
+  <div class="col-sm-2 mt-3"></div>
+  <div class="col-sm-8 mt-3 mx-left">
+   <span class = "h5 text-dark"><%= link_to "こちら", new_customer_registration_path %>から新規登録を行ってください。</span>
+  </div>
+ </div>
 </div>
-<>
