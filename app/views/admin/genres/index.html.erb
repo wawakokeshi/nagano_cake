@@ -1,4 +1,6 @@
-<h2>ジャンル一覧・追加</h2>
+<div class="container">
+  <div class="col-sm-12 mt-3">
+   <span class = "h3 bg-secondary text-dark">ジャンル一覧・追加</span>
 <p class="form">
 <%= form_with model: @genre, url: admin_genres_path, local: true do |f| %>
  <%= f.label :name, "ジャンル名" %>
@@ -23,3 +25,5 @@
  </tbody>
 </table>
 </p>
+</div>
+</div>
