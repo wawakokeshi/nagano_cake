@@ -1,32 +1,38 @@
 <div class="container">
+ <div class="row">
   <div class="col-sm-12 mt-3">
-   <span class = "h3 bg-secondary text-dark">注文履歴詳細</span>
-<table>
- <tbody>
-  <% @orders.each do |order| %>
-  <tr>
-   <td>購入者</td>
-   <td><%= order.name %></td>
-  </tr>
-  <tr>
-   <td>注文日</td>
-   <td><%= order.created_at %></td>
-  </tr>
-  <tr>
-   <td>配送先</td>
-   <td><%= order.address %></td>
-  </tr>
-  <tr>
-   <td>支払方法</td>
-   <td><%= order.payment_method %></td>
-  </tr>
-  <tr>
-   <td>注文ステータス</td>
-   <td>保留<%#= order_detail.??? %></td>
-  </tr>
-  <% end %>
- </tbody>
-</table>
+   <span class = "h5 text-dark">注文履歴詳細</span>
+  </div>
+ </div>
+ 
+ <div class="row">
+  <div class="col-sm-12 mt-3">
+   <table>
+    <tbody>
+     <% @orders.each do |order| %>
+     <tr>
+      <td>購入者</td>
+      <td><%= order.name %></td>
+     </tr>
+     <tr>
+      <td>注文日</td>
+      <td><%= order.created_at %></td>
+     </tr>
+     <tr>
+      <td>配送先</td>
+      <td><%= order.address %></td>
+     </tr>
+     <tr>
+      <td>支払方法</td>
+      <td><%= order.payment_method %></td>
+     </tr>
+     <tr>
+      <td>注文ステータス</td>
+      <td>保留<%#= order_detail.??? %></td>
+     </tr>
+     <% end %>
+    </tbody>
+   </table>
 
 <table>
  <thead>

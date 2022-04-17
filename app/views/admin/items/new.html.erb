@@ -5,7 +5,7 @@
   </div>
  </div>
  
- <%= form_with model: @item, local: true do |f| %>
+ <%= form_with model: @item, url: admin_items_path, local: true do |f| %>
  <div class="row">
   <div class="col-sm-2 mt-3"></div>
   <div class="col-sm-2 mt-3 mx-left"><%= f.label :item_image, "商品画像" %></div>
@@ -41,7 +41,6 @@
   <div class="col-sm-2 mt-3"></div>
   <div class="col-sm-2 mt-3 mx-left"><%= f.submit "新規登録", class: "btn btn-success btn-sm btn-block mt-2 mb-2" %></div>
  </div>
- 
  <% end %>
  </div>
 </div>

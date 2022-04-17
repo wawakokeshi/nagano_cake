@@ -1,19 +1,44 @@
-<h2>商品編集</h2>
+<div class="container">
+ <div class="row">
+  <div class="col-sm-12 mt-3">
+   <span class = "h5 text-dark">商品編集</span>
+  </div>
+ </div>
 
 <%= form_with model: @item, url: admin_item_path(@item), local:true do |f| %>
-<p><%= f.label :item_image, "商品画像" %>
-   <%= f.file_field :item_image, accept: "image/*" %></p>
-<p><%= f.label :name, "商品名" %>
-   <%= f.text_field :name %></p>
-<p><%= f.label :introduction, "商品説明" %>
-   <%= f.text_area :introduction %></p>
-<p><%= f.label :introduction, "ジャンル" %>
-   <%= f.collection_select :genre_id, Genre.all, :id, :name, option = { include_blank: false } %>
-<p><%= f.label :price, "税抜価格" %>
-   <%= f.text_field :price %>円</p>
-<%#= f.label :introduction, "販売ステータス" %>
-   <%#= f.text_area :introduction %>
-
-
- <%= f.submit "変更を保存" %>
+ <div class="row">
+  <div class="col-sm-2 mt-3"></div>
+  <div class="col-sm-2 mt-3 mx-left"><%= f.label :item_image, "商品画像" %></div>
+  <div class="col-sm-4 mt-3 mx-left"><%= f.file_field :item_image, accept: "image/*" %></div>
+ </div>
+ <div class="row">
+  <div class="col-sm-2 mt-3"></div>
+  <div class="col-sm-2 mt-3 mx-left"><%= f.label :name, "商品名" %></div>
+  <div class="col-sm-4 mt-3 mx-left"><%= f.text_field :name, class: "form-control" %></div>
+ </div>
+ <div class="row">
+  <div class="col-sm-2 mt-3"></div>
+  <div class="col-sm-2 mt-3 mx-left"><%= f.label :introduction, "商品説明" %></div>
+  <div class="col-sm-4 mt-3 mx-left"><%= f.text_area :introduction, class: "form-control" %></div>
+ </div>
+ <div class="row">
+  <div class="col-sm-2 mt-3"></div>
+  <div class="col-sm-2 mt-3 mx-left"><%= f.label :genre, "ジャンル" %></div>
+  <div class="col-sm-4 mt-3 mx-left"><%= f.collection_select :genre_id, Genre.all, :id, :name, option = { include_blank: false }, class: "form-control" %></div>
+ </div>
+ <div class="row">
+  <div class="col-sm-2 mt-3"></div>
+  <div class="col-sm-2 mt-3 mx-left"><%= f.label :price, "税抜価格" %></div>
+  <div class="col-sm-4 mt-3 mx-left"><%= f.text_field :price %>円</div>
+ </div>
+ <div class="row">
+  <div class="col-sm-2 mt-3"></div>
+  <div class="col-sm-2 mt-3 mx-left"><%#= f.label :introduction, "販売ステータス" %></div>
+  <div class="col-sm-8 mt-3 mx-left"><%#= f.text_area :introduction %></div>
+ </div>
+ <div class="row">
+  <div class="col-sm-2 mt-3"></div>
+  <div class="col-sm-2 mt-3"></div>
+  <div class="col-sm-2 mt-3 mx-left"><%= f.submit "変更を保存", class: "btn btn-success btn-sm btn-block mt-2 mb-2" %></div>
+ </div
 <% end %>
