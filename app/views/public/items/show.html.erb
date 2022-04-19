@@ -1,8 +1,19 @@
-<画像>
- 
-<h2><%= @item.name %></h2><br>
-<%= @item.introduction %><br>
-<%= @item.price %><br>
+<div class="container">
+ <div class="col-sm-6 mt-3">
+  <画像>
+ </div>
+
+ <div class="row">
+  <div class="col-sm-6 mt-3"><%= @item.name %></div>
+ </div>
+ <div class="row">
+  <div class="col-sm-6 mt-3"><%= @item.introduction %></div>
+ </div>
+ <div class="row">
+  <div class="col-sm-6 mt-3"><%= @item.price %></div>
+ </div>
+
 <%#= 個数を選択 %>
 
 <%= link_to "カートに入れる", cart_items_path %>
+</div>

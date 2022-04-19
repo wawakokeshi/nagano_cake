@@ -1,31 +1,50 @@
-<h2>配送先登録/一覧</h2>
+<div class="container">
+ <div class="row">
+  <div class="col-sm-2 mt-3">
+   <table class = "table-sm table-borderless">
+    <thead>
+     <th class="table-active h4">配送先登録/一覧</th>
+    </thead>
+   </table>
+  </div>
+ </div>
+ 
 <%= form_with model: @address, local:true do |f| %>
- <%= f.label :postal_code, "郵便番号(ハイフンなし)" %>
- <%= f.text_field :postal_code %><br>
- <%= f.label :address, "住所" %>
- <%= f.text_field :address %><br>
- <%= f.label :name, "宛名" %>
- <%= f.text_field :name %>
- <%= f.submit "新規登録" %>
+
+ <div class="row">
+  <div class="col-sm-3 mt-3"><%= f.label :postal_code, "郵便番号(ハイフンなし)" %></div>
+  <div class="col-sm-4 mt-3"><%= f.text_field :postal_code %></div>
+ </div>
+  <div class="row">
+  <div class="col-sm-3 mt-3"><%= f.label :address, "住所" %></div>
+  <div class="col-sm-4 mt-3"><%= f.text_field :address %></div>
+ </div>
+ <div class="row">
+  <div class="col-sm-3 mt-3"><%= f.label :name, "宛名" %></div>
+  <div class="col-sm-4 mt-3"><%= f.text_field :name %></div>
+  <div class="col-sm-4 mt-3"><%= f.submit "新規登録", class: "btn btn-success btn-sm mt-2 mb-2" %></div>
+ </div> 
 <% end %>
 
-<table>
- <thead>
-  <tr>
-   <td>郵便番号</td>
-   <td>住所</td>
-   <td>宛名</td>
-   <td></td>
-  </tr>
- </thead>
- <tbody>
-  <% @addresses.each do |addresses| %>
-  <tr>
-   <td><%= addresses.postal_code %></td>
-   <td><%= addresses.address %></td>
-   <td><%= addresses.name %></td>
-   <td><%#= link_to "編集する", edit_address_path %><%#= link_to "削除する", ??? %></td>
-  </tr>
-  <% end %>
+ <div class="row">
+  <div class="col-sm-6 mt-3">
+   <table class ="table table-bordered">
+    <thead>
+     <tr>
+      <th class ="table-active">郵便番号</th>
+      <th class ="table-active">住所</th>
+      <th class ="table-active">宛名</th>
+      <th class ="table-active"></th>
+     </tr>
+    </thead>
+    <tbody>
+   <% @addresses.each do |addresses| %>
+     <tr>
+      <td><%= addresses.postal_code %></td>
+      <td><%= addresses.address %></td>
+      <td><%= addresses.name %></td>
+      <td><%= link_to "編集する", edit_address_path, class: "btn btn-success btn-sm mt-2 mb-2"%><%#= link_to "削除する", ??? %></td>
+     </tr>
+   <% end %>
  </tbody>
 </table>

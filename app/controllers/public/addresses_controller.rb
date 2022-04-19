@@ -3,6 +3,7 @@ class Public::AddressesController < ApplicationController
 def index
  @address = Address.new
  @addresses = Address.all
+ #@addressid = Address.find(params[:id])
 end
 
 def edit
@@ -28,7 +29,7 @@ def destroy
 end
 
 def address_params
- params.require(:address).permit(:name,:postal_code,:address)
+ params.require(:address).permit(:name, :postal_code, :address, :customer_id)
 end
 
 end
