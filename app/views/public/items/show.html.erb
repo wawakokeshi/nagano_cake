@@ -4,16 +4,16 @@
  </div>
 
  <div class="row">
-  <div class="col-sm-6 mt-3"><%= @item.name %></div>
+  <div class="col-sm-6 mt-3 h3"><b><%= @item.name %></b></div>
  </div>
  <div class="row">
   <div class="col-sm-6 mt-3"><%= @item.introduction %></div>
  </div>
  <div class="row">
-  <div class="col-sm-6 mt-3"><%= @item.price %></div>
+  <div class="col-sm-6 mt-3"><b><%= @item.price %></b></div>
  </div>
 
 <%#= 個数を選択 %>
 
-<%= link_to "カートに入れる", cart_items_path %>
+<%= link_to "カートに入れる", cart_items_path, class: "btn btn-success btn- mb-2" %>
 </div>

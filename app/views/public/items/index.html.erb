@@ -4,13 +4,13 @@
    <span class = "h2">商品一覧</span>(全??件)
   </div>
  </div>
- 
+
  <% @items.each do |item| %>
  <table class ="table">
   <tr>
    <td><%= link_to item.name, item_path(item.id) %></td>
    <td><%= item.price %></td>
-  </tr> 
+  </tr>
  <% end %>
 </table>
 <%#= paginate @items %>

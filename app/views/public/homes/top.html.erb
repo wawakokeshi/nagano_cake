@@ -1,10 +1,32 @@
-<p>
-ようこそ、ながのCAKEへ！
-このサイトは、ケーキ販売のECサイトになります。
-会員でない方も商品の閲覧はできますが、購入には会員登録が必要になります。
-</p>
+<div class="container">
+ <div class="row">
+  <div class="col-sm-12 mt-5 d-flex justify-content-center">
+   ようこそ、ながのCAKEへ！<br>
+   このサイトは、ケーキ販売のECサイトになります。<br>
+   会員でない方も商品の閲覧はできますが、購入には会員登録が必要になります。
+  </div>
+ </div>
 
-<h2>新着商品</h2>
-<% @items.each do |item| %>
-<%= item.name %>
-<% end %>
+ <div class="row">
+  <div class="col-sm-2 mt-5 d-flex justify-content-center"></div>
+  <div class="col-sm-10 mt-5">
+   <span class="h2"><b>新着商品</b></span>
+  </div>
+ </div>
+ <div class="row">
+  <div class="col-sm-2 mt-5 d-flex justify-content-center"></div>
+  <div class="col-sm-9 mt-5">
+  <table class="table table-borderless">
+   <tr>
+    <% @items.each do |item| %>
+    <td><%= item.name %></td>
+    <% end %>
+   </tr>
+  </table>
+  </div>
+ </div>
+ 
+  <div class="row">
+   <div class="col-sm-2 mt-5 d-flex justify-content-right"><%= link_to "全ての商品を見る＞", items_path %></div>
+  </div>
+</div>

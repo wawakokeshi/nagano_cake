@@ -5,71 +5,76 @@
   </div>
  </div>
 
-
-注文情報
-<table>
- <tbody>
-  <%# @orders.each do |order| %>
-  <tr>
-   <td>注文日</td>
-   <td><%#= order.created_at %></td>
-  </tr>
-  <tr>
-   <td>配送先</td>
-   <td><%#= order.address %></td>
-  </tr>
-  <tr>
-   <td>支払方法</td>
-   <td><%#= order.方法 %></td>
-  </tr>
-  <tr>
-   <td>ステータス</td>
-   <td><%#= order.??? %></td>
-  </tr>
- </tbody>
-</table>
-
-請求情報
-<table>
- <tbody>
-  <%# @orders.each do |order| %>
-  <tr>
-   <td>商品合計</td>
-   <td><%#= order.created_at %></td>
-  </tr>
-  <tr>
-   <td>配送料</td>
-   <td><%#= order.address %></td>
-  </tr>
-  <tr>
-   <td>ご請求額</td>
-   <td><%#= order.方法 %></td>
-  </tr>
- </tbody>
-</table>
-
-注文内容
-<table>
-   <thead>
-   <tr>
-    <th>商品</th>
-    <th>単価(税込)</th>
-    <th>個数</th>
-    <th>小計</th>
-   </tr>
-   </thead>
-
-   <tbody>
-    <%# @items.each do |item| %>
-    <tr>
-     <td><%#= item.id %></td>
-     <td><%#= item.name %></td>
-     <td><%#= item.price %></td>
-     <td><%#= item.genre_id %></td>
-    </tr>
-    <%# end %>
-   </tbody>
-   
-   <tfoot>
-   </tfoot>
-  </table>
+ <div class="row">
+  <div class="col-sm-8 mt-3">
+   <b>注文情報</b><br>
+    <table class="table table-bordered">
+     <tbody>
+     <% @orders.each do |order| %>
+     <tr>
+      <td class ="table-active">注文日</td>
+      <td><%= order.created_at %></td>
+     </tr>
+     <tr>
+      <td class ="table-active">配送先</td>
+      <td><%= order.address %></td>
+     </tr>
+     <tr>
+      <td class ="table-active">支払方法</td>
+      <td><%= order.方法 %></td>
+     </tr>
+     <tr>
+      <td class ="table-active">>ステータス</td>
+      <td><%#= order.??? %></td>
+     </tr>
+    </tbody>
+   </table>
+  </div>
+  <div class="col-sm-4 mt-3">
+   <b>請求情報</b><br>
+    <table>
+     <tbody>
+      <% @orders.each do |order| %>
+      <tr>
+       <td>商品合計</td>
+       <td><%= order.created_at %></td>
+      </tr>
+      <tr>
+       <td>配送料</td>
+       <td><%= order.address %></td>
+      </tr>
+      <tr>
+       <td>ご請求額</td>
+       <td><%= order.方法 %></td>
+      </tr>
+     </tbody>
+    </table>
+  </div>
+ </div>
+ 
+ <div class="row">
+  <div class="col-sm-8 mt-3">
+   <b>注文内容</b><br>
+    <table>
+     <thead>
+      <tr>
+       <th>商品</th>
+       <th>単価(税込)</th>
+       <th>個数</th>
+       <th>小計</th>
+      </tr>
+     </thead>
+     <tbody>
+     <% @items.each do |item| %>
+      <tr>
+       <td><%= item.id %></td>
+       <td><%= item.name %></td>
+       <td><%= item.price %></td>
+       <td><%= item.genre_id %></td>
+      </tr>
+     <% end %>
+     </tbody>
+    </table>
+   </div>
+  </div>
+ </div>
