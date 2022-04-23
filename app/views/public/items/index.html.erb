@@ -1,19 +1,20 @@
 <div class="container">
  <div class="row">
-  <div class="col-sm-12 mt-3">
+  <div class="col-sm-3 mt-3"></div>
+  <div class="col-sm-9 mt-3">
    <span class = "h2">商品一覧</span>(全??件)
   </div>
  </div>
 
- <% @items.each do |item| %>
- <table class ="table">
-  <tr>
-   <td><%= link_to item.name, item_path(item.id) %></td>
-   <td><%= item.price %></td>
-  </tr>
- <% end %>
-</table>
-<%#= paginate @items %>
+
+ <div class="row">
+  <div class="col-sm-3 mt-3"></div>
+  <div class="col-sm-9 mt-3">
+  <% @items.each do |item| %>
+  <%= link_to item.name, item_path(item.id) %>
+  <%= item.price %>
+  <% end %>
   </div>
  </div>
+<%#= paginate @items %>
 </div>

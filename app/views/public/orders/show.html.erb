@@ -1,7 +1,7 @@
 <div class="container">
  <div class="row">
   <div class="col-sm-12 mt-3">
-   <span class = "h5 text-dark">注文履歴詳細</span>
+   <span class = "table-active h4">注文履歴詳細</span>
   </div>
  </div>
 
@@ -9,8 +9,8 @@
   <div class="col-sm-8 mt-3">
    <b>注文情報</b><br>
     <table class="table table-bordered">
-     <tbody>
      <% @orders.each do |order| %>
+     <tbody>
      <tr>
       <td class ="table-active">注文日</td>
       <td><%= order.created_at %></td>
