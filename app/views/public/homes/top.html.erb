@@ -21,13 +21,20 @@
   <table class="table table-borderless">
    <tr>
     <% @items.each do |item| %>
-    <td><%= item.name %></td>
+    <td>
+     <% if item.image.attached? %>
+      <%= image_tag item.image, size: "100x100" %>
+     <% else %>
+      <%= image_tag 'no_image', size: "100x100" %>
+     <% end %><br>
+    <%= link_to item.name, item_path(item.id) %>
+    </td>
     <% end %>
    </tr>
   </table>
   </div>
  </div>
- 
+
   <div class="row">
    <div class="col-sm-2 mt-5 d-flex justify-content-right"><%= link_to "全ての商品を見る＞", items_path %></div>
   </div>

@@ -1,6 +1,10 @@
 <div class="container">
  <div class="col-sm-6 mt-3">
-  <画像>
+   <% if @item.image.attached? %>
+    <%= image_tag @item.image, size: "100x100" %>
+   <% else %>
+    <%= image_tag 'no_image', size: "100x100" %>
+   <% end %>
  </div>
 
  <div class="row">
