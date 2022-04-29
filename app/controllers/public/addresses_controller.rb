@@ -1,9 +1,10 @@
 class Public::AddressesController < ApplicationController
 
+protect_from_forgery
+
 def index
  @address = Address.new
  @addresses = Address.all
- #@addressid = Address.find(params[:id])
 end
 
 def edit
@@ -22,10 +23,17 @@ end
 
 def update
  @address = Address.find(params[:id])
+ if @address.update(address_params)
+  redirect_to address_path
+ else
+  render :edit
+ end
 end
 
 def destroy
- @address = Address.find(params[:id])
+ address = Address.find(params[:id])
+ address.delete
+ redirect_to address_path
 end
 
 def address_params

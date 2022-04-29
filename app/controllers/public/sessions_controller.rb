@@ -18,7 +18,9 @@ class Public::SessionsController < Devise::SessionsController
   #   super
   # end
 
-  protected
+before_action :reject_customer, only: [:create]
+
+protect_from_forgery
 
 protected
 # 退会しているかを判断するメソッド
@@ -28,13 +30,24 @@ def customer_state
   ## アカウントを取得できなかった場合、このメソッドを終了する
   return if !@customer
   ## 【処理内容2】 取得したアカウントのパスワードと入力されたパスワードが一致してるかを判別
-   if @customer.valid_password?(params[:customer][:password]) && (@member.member_status == true)
-     redirect_to new_member_session_path
+   if @customer.valid_password?(params[:customer][:password]) && (@customer.customer_state == true)
+     redirect_to new_customer_session_path
    else
      super
    end
 end
 
+def reject_customer
+    @customer = Customer.find_by(email: params[:customer][:email].downcase)
+    if @customer
+      if (@customer.valid_password?(params[:customer][:password]) && (@customer.active_for_authentication? == false))
+        flash[:error] = "退会済みです。"
+        redirect_to new_customer_session_path
+      end
+    else
+      flash[:error] = "必須項目を入力してください。"
+    end
+end
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])

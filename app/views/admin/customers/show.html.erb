@@ -39,7 +39,7 @@
      </tr>
      <tr>
       <td>会員ステータス</td>
-      <td><%#= order_detail.price %>保留中</td>
+      <td><%= @customer.is_active %></td>
      </tr>
     </tbody>
    </table>

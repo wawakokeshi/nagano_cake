@@ -1,6 +1,8 @@
 class Public::ApplicationsController < ApplicationController
   before_action :authenticate_customer!, except: [:top, :about, :index]
 
+  protect_from_forgery
+ 
    def after_sign_in_path_for(resource)
     customer_path(current_customer.id)
    end
