@@ -5,3 +5,9 @@
           credit_card: "クレジットカード"
           transfer: "銀行振込"
 
+  ja:
+    enums:
+      customer:
+        is_active:
+          true: "有効"
+          false: "退会"

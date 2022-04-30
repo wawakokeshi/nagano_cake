@@ -1,5 +1,7 @@
 class Public::CustomersController < ApplicationController
 
+before_action :correct_customer, only: [:edit, :update, :withdrawal]
+
 def show
  @customer = Customer.find(params[:id])
 end
@@ -32,6 +34,11 @@ end
 private
   def customer_params
     params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :postal_code, :address, :telephone_number, :email)
+  end
+
+  def correct_customer
+   @customer = Customer.find(params[:id])
+   redirect_to(customer_path(current_customer.id)) unless @customer == current_customer
   end
 
 end

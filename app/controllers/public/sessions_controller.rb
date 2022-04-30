@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
 class Public::SessionsController < Devise::SessionsController
-  # before_action :configure_sign_in_params, only: [:create]
-
+ # before_action :configure_sign_in_params, only: [:create]
+  before_action :reject_customer, only: [:create]
+  skip_before_action :verify_authenticity_token
   # GET /resource/sign_in
   # def new
   #   super
@@ -18,29 +19,24 @@ class Public::SessionsController < Devise::SessionsController
   #   super
   # end
 
-before_action :reject_customer, only: [:create]
-
-protect_from_forgery
+#protect_from_forgery
 
 protected
-# 退会しているかを判断するメソッド
+
 def customer_state
-  ## 【処理内容1】 入力されたemailからアカウントを1件取得
   @customer = Customer.find_by(email: params[:customer][:email])
-  ## アカウントを取得できなかった場合、このメソッドを終了する
   return if !@customer
-  ## 【処理内容2】 取得したアカウントのパスワードと入力されたパスワードが一致してるかを判別
-   if @customer.valid_password?(params[:customer][:password]) && (@customer.customer_state == true)
-     redirect_to new_customer_session_path
-   else
-     super
-   end
+  if @customer.valid_password?(params[:customer][:password]) && (@customer.is_active == true)
+   redirect_to customer_path(current_customer.id)
+  else
+   render new_customer_registration_path
+  end
 end
 
 def reject_customer
-    @customer = Customer.find_by(email: params[:customer][:email].downcase)
+    @customer = Customer.find_by(email: params[:customer][:email])
     if @customer
-      if (@customer.valid_password?(params[:customer][:password]) && (@customer.active_for_authentication? == false))
+      if (@customer.valid_password?(params[:customer][:password]) && (@customer.is_active == false))
         flash[:error] = "退会済みです。"
         redirect_to new_customer_session_path
       end
@@ -48,8 +44,9 @@ def reject_customer
       flash[:error] = "必須項目を入力してください。"
     end
 end
+
   # If you have extra params to permit, append them to the sanitizer.
-  # def configure_sign_in_params
-  #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
-  # end
+ # def configure_sign_in_params
+    # devise_parameter_sanitizer.permit(:sign_in, keys: [:password, :email])
+  #end
 end
