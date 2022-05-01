@@ -11,3 +11,10 @@
         is_active:
           true: "有効"
           false: "退会"
+          
+  ja:
+    enums:
+      item:
+        is_active:
+          true: "販売中"
+          false: "販売停止中"

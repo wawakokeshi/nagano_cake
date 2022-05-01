@@ -20,4 +20,9 @@ validates :telephone_number, presence: true
 
 enum is_active: { true: 0, false: 1 }
 
+ def full_name
+  self.last_name + self.first_name
+ end
+ 
+
 end

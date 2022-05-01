@@ -1,7 +1,11 @@
 <div class="container">
  <div class="row">
-  <div class="col-sm-12 mt-3">
-   <span class = "h5 text-dark">商品詳細</span>
+   <div class="col-sm-2 mt-3">
+   <table class = "table-sm table-borderless">
+    <thead>
+     <th class="table-active h5">商品詳細</th>
+    </thead>
+   </table>
   </div>
  </div>
  
@@ -34,7 +38,7 @@
      </tr>
      <tr>
       <td>販売ステータス</td>
-      <td><%= @item.price %></td>
+      <td><%= @item.is_active %></td>
      </tr>
      <tr>
       <td></td>

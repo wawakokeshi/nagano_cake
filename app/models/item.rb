@@ -14,4 +14,6 @@ class Item < ApplicationRecord
     (price * 1.1).floor
    end
   
+  enum is_active: { true: 0, false: 1 }
+  
 end

@@ -12,8 +12,8 @@
 <%= form_with model: @item, url: admin_item_path(@item), local:true do |f| %>
  <div class="row">
   <div class="col-sm-2 mt-3"></div>
-  <div class="col-sm-2 mt-3 mx-left"><%= f.label :item_image, "商品画像" %></div>
-  <div class="col-sm-4 mt-3 mx-left"><%= f.file_field :item_image, accept: "image/*" %></div>
+  <div class="col-sm-2 mt-3 mx-left"><%= f.label :image, "商品画像" %></div>
+  <div class="col-sm-4 mt-3 mx-left"><%= f.file_field :image, accept: "image/*" %></div>
  </div>
  <div class="row">
   <div class="col-sm-2 mt-3"></div>
@@ -37,8 +37,13 @@
  </div>
  <div class="row">
   <div class="col-sm-2 mt-3"></div>
-  <div class="col-sm-2 mt-3 mx-left"><%#= f.label :introduction, "販売ステータス" %></div>
-  <div class="col-sm-8 mt-3 mx-left"><%#= f.text_area :introduction %></div>
+  <div class="col-sm-2 mt-3 mx-left"><%= f.label :is_active, "販売ステータス" %></div>
+  <div class="col-sm-8 mt-3 mx-left">
+   <%= f.radio_button :is_active, Item.is_actives.key(0) %>
+   <%= f.label :is_active, Item.is_actives_i18n[:true] %>
+   <%= f.radio_button :is_active, Item.is_actives.key(1) %>
+   <%= f.label :is_active, Item.is_actives_i18n[:false] %>
+  </div>
  </div>
  <div class="row">
   <div class="col-sm-2 mt-3"></div>
