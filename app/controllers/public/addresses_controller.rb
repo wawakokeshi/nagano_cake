@@ -1,46 +1,40 @@
 class Public::AddressesController < ApplicationController
 
-#protect_from_forgery
+before_action :correct_user, only: [:new, :edit, :destroy, :update]
 
 def index
- @address = Address.new
  @addresses = Address.all
- @addressid = Address.find(params[:id])
- #@addressid.customer_id = current_customer.id
+ @address = Address.new
 end
 
 def edit
  @address = Address.find(params[:id])
- #@address.customer_id = current_customer.id
 end
 
 def create
- @customer = current_customer
  @address = Address.new(address_params)
- @address.customer_id = current_customer.id
  if @address.save
-  redirect_to addresses_path(@customer.id)
+  redirect_to addresses_path
  else
-  @addresses=current_customer.address.all
-  render addresses_path(@customer.id)
+  @addresses = Address.all
+  render :index
  end
 end
 
 def update
- @customer = current_customer
- @address.customer_id = current_customer.id
  @address = Address.find(params[:id])
  if @address.update(address_params)
-  redirect_to addresses_path(@customer.id)
+  redirect_to addresses_path
  else
-  render :edit
+  @addresses = Address.all
+  render :index
  end
 end
 
 def destroy
  address = Address.find(params[:id])
  address.delete
- redirect_to address_path
+ redirect_to addresses_path
 end
 
 private
@@ -48,5 +42,12 @@ private
 def address_params
  params.require(:address).permit(:name, :postal_code, :address, :customer_id)
 end
+
+def correct_user
+ @address = Address.find(params[:id])
+ @customer = @address.customer
+ redirect_to(root_path) unless @customer == current_user
+end
+ 
 
 end

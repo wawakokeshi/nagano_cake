@@ -2,9 +2,9 @@
  <div class="row">
   <div class="col-sm-6 mt-3">
    <% if @item.image.attached? %>
-    <%= image_tag @item.image, size: "300x300" %>
+    <%= image_tag @item.image, size: "500x300" %>
    <% else %>
-    <%= image_tag 'no_image', size: "300x300" %>
+    <%= image_tag 'no_image', size: "500x300" %>
    <% end %>
   </div>
 
@@ -12,7 +12,7 @@
    <table class="table table-borderless">
     <tr><td class="h3"><b><%= @item.name %></b></td></tr>
     <tr><td><%= @item.introduction %></td></tr>
-    <tr><td><b><%= @item.price %>円</b></td></tr>
+    <tr><td><b><%= @item.with_tax_price %>円</b>(税込)</td></tr>
     <tr><td>
       <%= form_with model: @item, url: cart_items_path, method: :post, local:true do |f| %>
        <%= f.hidden_field :item_id, value: @item.id %>

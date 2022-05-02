@@ -1,4 +1,5 @@
 <div class="container">
+ 
  <div class="row"> 
   <div class="col-sm-2 mt-3">
    <table class = "table-sm table-borderless">
@@ -31,5 +32,14 @@
      <% end %>
     </tbody>
    </table>
-
-<%= paginate @customers %>
+  </div>
+ </div>
+ <div class="row">
+  <div class="col-sm-12 mt-3">
+   <div class="d-flex justify-content-center">
+    <%= paginate @customers %>
+   </div>
+  </div>
+ </div>
+ 
+</div>
