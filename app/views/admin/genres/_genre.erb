@@ -2,8 +2,9 @@
  <thead>
   <th>ジャンル一覧</th>
  </thead>
+  <tbody>
  <% @genres.each do |genre| %>
- <tbody>
   <td><%= genre.name %></td>
+  <% end %>
  </tbody>
 </table>
