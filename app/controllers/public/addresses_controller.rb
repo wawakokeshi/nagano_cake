@@ -13,7 +13,8 @@ end
 
 def create
  @address = Address.new(address_params)
- if @address.save
+ @address.customer_id = current_customer.id
+ if @address.save!
   redirect_to addresses_path
  else
   @addresses = Address.all
@@ -46,8 +47,8 @@ end
 def correct_user
  @address = Address.find(params[:id])
  @customer = @address.customer
- redirect_to(root_path) unless @customer == current_user
+ redirect_to(root_path) unless @customer == current_customer
 end
- 
+
 
 end
