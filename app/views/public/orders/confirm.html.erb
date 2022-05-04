@@ -18,12 +18,13 @@
      <td>数量</td>
      <td>小計</td>
     </tr>
-    <%= @cart_items.each do |cart_items| %>
+    <%= @cart_items.each do |cart_item| %>
+    <% @total = 0 %>
     <tr>
-     <td><%= cart_items.name %></td>
-     <td><%= cart_items.with_tax_??? %></td>
-     <td><%= cart_items.amount %></td>
-     <td><%#= cart_items.??? %></td>
+     <td><%= cart_item.item.name %></td>
+     <td><%= cart_item.item.price.with_tax_price %></td>
+     <td><%= cart_item.amount %></td>
+     <td><%= cart_item.subtotal %></td>
     </tr>
    </table>
   </div>
@@ -39,7 +40,7 @@
     </tr>
     <tr>
      <td>請求金額</td>
-     <td><%#= @orders.billing_amount %></td>
+     <td><%= @total = @orders.postage + @orders.billing_amount %></td>
     </tr>
    </table>
   </div>
@@ -47,14 +48,14 @@
   
  <div class = "row">
   <div class = "col-sm-2 mt-5"><b>支払方法</b></div>
-  <div class = "col-sm-6 mt-5"><%= cart_items.payment_method %></div>
+  <div class = "col-sm-6 mt-5"><%= @order.payment_method %></div>
  </div>
 
  <div class = "row">
   <div class = "col-sm-2 mt-5"><b>お届け先</b></div>
-  <div class = "col-sm-6 mt-5"><%= cart_items.payment_method %></div>
+  <div class = "col-sm-6 mt-5"><%#= @order.address %></div>
  </div>
-
+ <% end %>
 
  <div class = "row">
   <div class = "col-sm-2 mt-5 justfy-content-center"><%#= link_to "注文を確定する", class: "btn btn-primary btn-sm mt-2 mb-2" %></div>

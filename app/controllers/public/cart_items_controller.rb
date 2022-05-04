@@ -18,7 +18,7 @@ def create
   redirect_to cart_items_path
  end
 end
- 
+
 
 def update
  @cart_item = CartItem.find(params[:id])
@@ -26,7 +26,7 @@ def update
   redirect_to cart_items_path(@cart_item.id)
  else
   @cart_items = CartItem.all
-  @total = @cart_items.inject(0) { |sum, item| sum + item.sum_of_price }
+  #@total = @cart_items.inject(0) { |sum, item| sum + item.sum_of_price }
   render :index
  end
 end

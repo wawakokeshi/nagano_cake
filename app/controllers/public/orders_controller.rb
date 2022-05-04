@@ -2,9 +2,11 @@ class Public::OrdersController < ApplicationController
 
 def new
  @order = Order.new
- @order.postal_code = current_customer.postal_code
- @order.address = current_customer.address
- @order.name = current_customer.first_name + current_customer.last_name
+ @customer = current_customer
+ @order.postal_code = @customer.postal_code
+ @order.address = @customer.address
+ @order.name = @customer.last_name + @customer.first_name
+ @addresses = Address.where(customer_id: @customer.id).includes(:customer).order("created_at DESC")
 end
 
 def show
@@ -23,7 +25,8 @@ def create
 end
 
 def confirm
- @order = Order.new(order_params)
+ @order = Order.find(params[])
+ #@order = Order.new(order_params)
  @address = Address.find(params[:order][:address_id])
  @order.postal_code = @address.postal_code
  @order.address = @address.address
