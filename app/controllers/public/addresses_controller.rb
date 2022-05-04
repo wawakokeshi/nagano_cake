@@ -3,7 +3,8 @@ class Public::AddressesController < ApplicationController
 before_action :correct_user, only: [:new, :edit, :destroy, :update]
 
 def index
- @addresses = Address.all
+ @customer = current_customer
+ @addresses = Address.where(customer_id: @customer.id).includes(:customer).order("created_at DESC")
  @address = Address.new
 end
 
