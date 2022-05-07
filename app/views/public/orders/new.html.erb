@@ -10,7 +10,7 @@
   </div>
  </div>
 
- <%= form_with model: @order, local:true do |f| %>
+ <%= form_with model: @order, url: confirm_path, local:true do |f| %>
  <div class="row">
   <div class="col-sm-2 mt-3 h4">
    <b>支払方法</b>
@@ -60,7 +60,7 @@
  <div class="row">
   <div class="col-sm-1"></div>
   <div class="col-sm-11">
-  <%= f.select :address_id, options_from_collection_for_select(@addresses, :id, :address_display) %> 
+  <%= f.select :address_id, options_from_collection_for_select(@addresses, :id, :address_display) %>
   </div>
  </div>
  <div class="row">
@@ -86,12 +86,13 @@
   <div class="col-sm-3"><%= f.label :name, "宛名" %></div>
   <div class="col-sm-3"><%= f.text_field :name, class: "form-control" %></div>
  </div>
- <% end %>
 
  <div class = "row">
   <div class ="col-sm-12 mt-3 d-flex justify-content-center">
-   <%#= link_to "確認画面へ進む", confirm_path, method: :get, class: "btn btn-primary btn-sm mt-2 mb-2" %>
+   <%= f.submit "確認画面へ進む", class: "btn btn-primary btn-sm mt-2 mb-2" %>
   </div>
  </div>
+
+  <% end %>
 
 </div>

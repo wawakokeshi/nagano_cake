@@ -27,7 +27,7 @@ scope module: :public do
  patch '/customers/:id/withdrawal' => 'customers#withdrawal', as: 'withdrawal'
  resources :orders, only: [:new, :show, :create, :index]
  resources :addresses, except: [:show]
- get '/orders/:id/confirm' => 'orders#confirm', as: 'confirm'
+ post '/orders/confirm' => 'orders#confirm', as: 'confirm'
  get '/orders/thanks' => 'orders#thanks', as: 'thanks'
  delete '/cart_items' => 'cart_items#destroy_all', as: 'destroy_all'
 end
