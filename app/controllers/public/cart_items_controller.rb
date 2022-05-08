@@ -3,7 +3,6 @@ class Public::CartItemsController < ApplicationController
 def index
  @cart_items = CartItem.all
  @cart_item = CartItem.new
- #@total = @cart_items.inject(0) { |sum, item| sum + item.sum_of_price }
 end
 
 def create
@@ -26,7 +25,6 @@ def update
   redirect_to cart_items_path(@cart_item.id)
  else
   @cart_items = CartItem.all
-  #@total = @cart_items.inject(0) { |sum, item| sum + item.sum_of_price }
   render :index
  end
 end

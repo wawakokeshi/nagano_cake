@@ -5,7 +5,7 @@
    <%= render 'admin/genres/genre', genre: @genre %>
   </div>
   <div class="col-sm-10 mt-5 d-flex justify-content-center">
-   <div class="jumbotron">
+   <div class="jumbotron jumbotron-extend">
    ようこそ、ながのCAKEへ！<br>
    このサイトは、ケーキ販売のECサイトになります。<br>
    会員でない方も商品の閲覧はできますが、購入には会員登録が必要になります。
@@ -26,7 +26,7 @@
    <table class="table table-borderless">
     <tr class="d-flex justify-content-center">
      <% @items.each do |item| %>
-     <td class = "d-flex justyfy-content-center">
+     <td>
       <% if item.image.attached? %>
        <%= image_tag item.image, size: "200x100" %>
       <% else %>
@@ -34,6 +34,8 @@
       <% end %>
      <br>
      <%= link_to item.name, item_path(item.id) %>
+     <br>
+     ￥<%= item.with_tax_price %>
      </td>
      <% end %>
     </tr>

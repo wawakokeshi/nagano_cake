@@ -18,14 +18,22 @@
      <td class = "table-active">数量</td>
      <td class = "table-active">小計</td>
     </tr>
-    <% @cart_items.each do |cart_item| %>
     <% @total = 0 %>
+    <% @cart_items.each do |cart_item| %>
     <tr>
-     <td><%= cart_item.item.name %></td>
+     <td>
+      <% if cart_item.item.image.attached? %>
+      <%= image_tag cart_item.item.image, size: "100x50" %>
+      <% else %>
+      <%= image_tag 'no_image', size: "100x50" %>
+      <% end %>
+      <%= cart_item.item.name %>
+     </td>
      <td><%= cart_item.item.with_tax_price %></td>
      <td><%= cart_item.amount %></td>
      <td><%= cart_item.subtotal %></td>
     </tr>
+    <% @total += cart_item.subtotal %>
     <% end %>
    </table>
   </div>
@@ -37,11 +45,11 @@
     </tr>
     <tr>
      <td class = "table-active">商品合計</td>
-     <td><%= @order.billing_amount %></td>
+     <td><%= @total %></td>
     </tr>
     <tr>
      <td class = "table-active">請求金額</td>
-     <td><%= @total %></td>
+     <td><%= @total += @order.postage %></td>
     </tr>
    </table>
   </div>
@@ -53,13 +61,25 @@
  </div>
 
  <div class = "row">
-  <div class = "col-sm-2 mt-5"><b>お届け先</b></div>
-  <div class = "col-sm-6 mt-5"><%= @order.address %></div>
+  <div class = "col-sm-2 mt-5">
+   <b>お届け先</b>
+  </div>
+  <div class = "col-sm-6 mt-5">
+   <%= @order.postal_code %><br>
+   <%= @order.address %><br>
+   <%= @order.name %>
+  </div>
  </div>
 
  <div class = "row">
   <div class = "col-sm-12 mt-5 d-flex justify-content-center">
-   <%= link_to "注文を確定する", orders_path, method: :post, class: "btn btn-primary btn-sm mt-2 mb-2" %>
+   <%= form_with model: @order, url: orders_path, local:true do |f| %>
+   <%= f.hidden_field :postal_code, value: @order.postal_code %>
+   <%= f.hidden_field :address, value: @order.address %>
+   <%= f.hidden_field :name, value: @order.name %>
+   <%= f.hidden_field :billing_amount, value: @total %>
+   <%= f.submit "注文を確定する", class: "btn btn-primary btn-sm mt-2 mb-2" %>
+   <% end %>
    </div>
  </div>
 

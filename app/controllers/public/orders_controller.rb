@@ -13,7 +13,6 @@ def show
  @orders = current_customer.orders
  @orders = Order.all
  @items = Item.all
- #@order = Order.find(params[:id])
 end
 
 def index
@@ -22,12 +21,22 @@ end
 
 def confirm
  @order = Order.new(order_params)
- @order.save
- @address = Address.find(params[:order][:address_id])
- @order.postal_code = @address.postal_code
- @order.address = @address.address
- @order.name = @address.name
  @cart_items = current_customer.cart_items
+ if params[:order][:select_address] == "0"
+   @customer = current_customer
+   @order.postal_code = @customer.postal_code
+			@order.address = @customer.address
+			@order.name = @customer.last_name + @customer.first_name
+ elsif params[:order][:select_address] == "1"
+   @address = Address.find(params[:order][:address_id])
+   @order.postal_code = @address.postal_code
+   @order.address = @address.address
+   @order.name = @address.name
+ elsif params[:order][:select_address] == "2"
+   @order.postal_code = params[:order][:postal_code]
+			@order.address = params[:order][:address]
+			@order.name = params[:order][:name]
+ end
 end
 
 def create
@@ -35,6 +44,8 @@ def create
  if @order.save
   redirect_to thanks_path
  else
+  @order = Order.new(order_params)
+  @cart_items = current_customer.cart_items
   render :confirm
  end
 end
