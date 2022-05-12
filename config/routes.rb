@@ -20,6 +20,8 @@ end
 scope module: :public do
  root to: 'homes#top'
  get '/about' => 'homes#about', as: 'about'
+ delete '/cart_items' => 'cart_items#destroy_all', as: 'destroy_all'
+ get '/orders/thanks' => 'orders#thanks', as: 'thanks'
  resources :items, only: [:index, :show]
  resources :cart_items, only: [:index, :create, :destroy, :update]
  resources :customers, only: [:index, :show, :edit, :update]
@@ -28,8 +30,6 @@ scope module: :public do
  resources :orders, only: [:new, :show, :create, :index]
  resources :addresses, except: [:show]
  post '/orders/confirm' => 'orders#confirm', as: 'confirm'
- get '/orders/thanks' => 'orders#thanks', as: 'thanks'
- delete '/cart_items' => 'cart_items#destroy_all', as: 'destroy_all'
 end
  
  
