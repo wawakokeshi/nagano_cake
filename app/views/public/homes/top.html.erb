@@ -35,7 +35,7 @@
      <br>
      <%= link_to item.name, item_path(item.id) %>
      <br>
-     ￥<%= item.with_tax_price %>
+     <%= number_to_currency(item.with_tax_price, unit:"￥", strip_insignificant_zeros: true) %>
      </td>
      <% end %>
     </tr>

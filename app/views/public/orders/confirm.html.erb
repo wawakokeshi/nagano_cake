@@ -29,11 +29,11 @@
       <% end %>
       <%= cart_item.item.name %>
      </td>
-     <td><%= cart_item.item.with_tax_price %></td>
+     <td><%= cart_item.item.with_tax_price.to_s(:delimited) %></td>
      <td><%= cart_item.amount %></td>
-     <td><%= cart_item.subtotal %></td>
+     <td><%= cart_item.subtotal.to_s(:delimited) %></td>
     </tr>
-    <% @total += cart_item.subtotal %>
+    <% number_to_currency(@total += cart_item.subtotal, strip_insignificant_zeros: true) %>
     <% end %>
    </table>
   </div>
@@ -41,7 +41,7 @@
    <table class ="table table-bordered">
     <tr>
      <td class = "table-active">送料</td>
-     <td><%= @order.postage %></td>
+     <td><%= @order.postage.to_s(:delimited) %></td>
     </tr>
     <tr>
      <td class = "table-active">商品合計</td>
@@ -49,7 +49,7 @@
     </tr>
     <tr>
      <td class = "table-active">請求金額</td>
-     <td><%= @total += @order.postage %></td>
+     <td><%= number_to_currency(@total += @order.postage, strip_insignificant_zeros: true) %></td>
     </tr>
    </table>
   </div>

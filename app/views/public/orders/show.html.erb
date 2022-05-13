@@ -36,7 +36,7 @@
      <tbody>
       <tr>
        <td class ="table-active">商品合計</td>
-       <td><%= @order.billing_amount -= @order.postage %></td>
+       <td><%= number_to_currency(@order.billing_amount -= @order.postage, strip_insignificant_zeros: true) %></td>
       </tr>
       <tr>
        <td class ="table-active">配送料</td>
@@ -44,7 +44,7 @@
       </tr>
       <tr>
        <td class ="table-active"><b>ご請求額</b></td>
-       <td><%= @order.billing_amount += @order.postage %></td>
+       <td><%= number_to_currency(@order.billing_amount += @order.postage, strip_insignificant_zeros: true) %></td>
       </tr>
      </tbody>
     </table>
@@ -66,9 +66,9 @@
      <tbody>
        <tr>
        <td><%= @order_detail.item.name %></td>
-       <td><%= @order_detail.price %></td>
+       <td><%= number_to_currency(@order_detail.price, strip_insignificant_zeros: true) %></td>
        <td><%= @order_detail.amount %></td>
-       <td><%= @order_detail.price %></td>
+       <td><%= number_to_currency(@order_detail.price, strip_insignificant_zeros: true) %></td>
       </tr>
 
      </tbody>

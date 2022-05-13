@@ -16,7 +16,7 @@
    <table class="table table-borderless">
     <tr><td class="h3"><b><%= @item.name %></b></td></tr>
     <tr><td><%= @item.introduction %></td></tr>
-    <tr><td><b><%= @item.with_tax_price %>円</b>(税込)</td></tr>
+    <tr><td><b><%= number_to_currency(@item.with_tax_price, unit:"￥", strip_insignificant_zeros: true) %></b>(税込)</td></tr>
     <tr><td>
       <%= form_with model: @cart_item, url: cart_items_path, method: :post, local:true do |f| %>
        <%= f.hidden_field :item_id, value: @item.id %>
