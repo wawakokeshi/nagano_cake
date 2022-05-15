@@ -9,13 +9,15 @@ def new
 end
 
 def show
+ @order = current_customer
  @order = Order.find(params[:id])
  @order_detail = OrderDetail.find(params[:id])
- #@order_detail = current_customer.order_detail
+ @order_details = OrderDetail.where(order_id: @order.id)
 end
 
 def index
  @orders = current_customer.orders.all
+ #@order_details = OrderDetail.where(order_id: @order.id)
 end
 
 def confirm
@@ -64,7 +66,7 @@ end
 
 private
   def order_params
-    params.require(:order).permit(:postal_code, :address, :postage, :billing_amount, :payment_method, :customer_id, :select_address, :name)
+    params.require(:order).permit(:postal_code, :address, :postage, :billing_amount, :payment_method, :customer_id, :select_address, :name, :is_active)
   end
 
 end

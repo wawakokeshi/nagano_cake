@@ -25,11 +25,11 @@
      </tr>
      <tr>
       <td class ="table-active">支払方法</td>
-      <td><%= @order.payment_method %></td>
+      <td><%= @order.payment_method_i18n %></td>
      </tr>
      <tr>
       <td class ="table-active">ステータス</td>
-      <td><%#= @order.is_active %></td>
+      <td><%= @order.is_active %></td>
      </tr>
     </tbody>
    </table>
@@ -68,13 +68,14 @@
       </tr>
      </thead>
      <tbody>
+      <% @order_details.each do |order_detail| %>
        <tr>
-       <td><%= @order_detail.item.name %></td>
-       <td><%= @order_detail.price.to_s(:delimited) %></td>
-       <td><%= @order_detail.amount %></td>
-       <td><%= (@order_detail.price *=@order_detail.amount).to_s(:delimited) %></td>
+       <td><%= order_detail.item.name %></td>
+       <td><%= order_detail.price.to_s(:delimited) %></td>
+       <td><%= order_detail.amount %></td>
+       <td><%= (order_detail.price *=order_detail.amount).to_s(:delimited) %></td>
       </tr>
-
+      <% end %>
      </tbody>
     </table>
    </div>
