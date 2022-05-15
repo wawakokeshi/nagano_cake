@@ -18,7 +18,8 @@ def create
  if @address.save
   redirect_to addresses_path
  else
-  @addresses = Address.all
+  @customer = current_customer
+  @addresses = Address.where(customer_id: @customer.id).includes(:customer).order("created_at DESC")
   render :index
  end
 end
@@ -28,8 +29,8 @@ def update
  if @address.update(address_params)
   redirect_to addresses_path
  else
-  @addresses = Address.all
-  render :index
+  @address = Address.find(params[:id])
+  render :edit
  end
 end
 

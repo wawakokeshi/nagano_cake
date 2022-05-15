@@ -31,7 +31,7 @@
       <tr>
        <td><%= item.id %></td>
        <td><%= link_to item.name, admin_item_path(item.id) %></td>
-       <td><%= number_to_currency(item.price, strip_insignificant_zeros: true) %></td>
+       <td><%= item.price.to_s(:delimited) %></td>
        <td><%= item.genre.name %></td>
        <td><%= item.is_active %></td>
       </tr>
@@ -43,7 +43,7 @@
  
  <div class="row">
   <div class="col-sm-12 mt-3">
-   <div class="justify-content-center">
+   <div class="d-flex justify-content-center">
     <%= paginate @items %>
    </div>
   </div>

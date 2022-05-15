@@ -9,17 +9,13 @@ def new
 end
 
 def show
- @order = current_customer.orders
  @order = Order.find(params[:id])
  @order_detail = OrderDetail.find(params[:id])
  #@order_detail = current_customer.order_detail
 end
 
 def index
- @order_details = OrderDetail.all
- #@order_details = current_customer.order_details
- @orders = Order.all
- #@orders.customer_id = current_customer.id
+ @orders = current_customer.orders.all
 end
 
 def confirm
