@@ -17,7 +17,6 @@ end
 
 def index
  @orders = current_customer.orders.all
- #@order_details = OrderDetail.where(order_id: @order.id)
 end
 
 def confirm
