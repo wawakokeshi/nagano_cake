@@ -17,7 +17,7 @@ validates :telephone_number, format: { with: VALID_TELEPHONE_NUMBER_REGEX }, pre
 VALID_POSTAL_CODE_REGEX = /\A\d{3}[-]?\d{4}\z/
 validates :postal_code, format: { with: VALID_POSTAL_CODE_REGEX }, presence: { message: "正しく入力してください" }
 
-enum is_active: { true: true, false: false }
+enum is_active: { stay: true,  withdrawal: false }
 
  def full_name
   self.last_name + self.first_name

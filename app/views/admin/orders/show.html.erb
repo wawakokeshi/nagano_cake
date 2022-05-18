@@ -32,7 +32,12 @@
      </tr>
      <tr>
       <td><b>注文ステータス</b></td>
-      <td><%= @order.is_active_i18n %></td>
+      <td>
+       <%= form_with model: @order, url: admin_order_path(@order), method: :patch, local:true do |f| %>
+       <%= @order.is_active_i18n %><%= f.select :order, :is_active, ["入金待ち", "入金確認","製作中","発送準備中","発送済み"] %>
+       <%= f.submit "更新", class: "btn btn-success btn-sm mt-2 mb-2" %>
+       <% end %>
+      </td>
      </tr>
     </tbody>
    </table>
@@ -61,7 +66,12 @@
       <td><%= @price.to_s(:delimited) %></td>
       <td><%= @amount %></td>
       <td><%= (@price *= @amount).to_s(:delimited) %></td>
-      <td><%= order_detail.is_active %></td>
+      <td>
+       <%= order_detail.is_active %>
+       <%#= form_with model: order_detail, url: admin_order_detail_path(order_detail), method: :patch, local:true do |f| %>
+       <%#= f.select :is_active, ["製作不可", "製作待ち", "製作中", "製作完了"] %>
+       <%#= f.submit "更新", class: "btn btn-success btn-sm mt-2 mb-2" %>
+       <%# end %></td>
       <td><%= link_to "更新", admin_orders_detail_path, class: "btn btn-success btn-sm mt-2 mb-2" %></td>
      </tr>
      <% end %>
@@ -93,5 +103,3 @@
    </table>
   </div>
  </div>
-
-</div>

@@ -4,12 +4,12 @@ class Public::ItemsController < ApplicationController
   @genres = Genre.all
   if params[:genre_id].present?
    genre = Genre.find(params[:genre_id])
-   @items = genre.items.page(params[:page])
+   @items = genre.items.where(is_active: true).page(params[:page])
    unless @items.present?
     redirect_to items_path
    end
   else
-   @items = Item.page(params[:page])
+   @items = Item.where(is_active: true).page(params[:page])
   end
  end
 
@@ -19,12 +19,12 @@ class Public::ItemsController < ApplicationController
   @genres = Genre.all
   if params[:genre_id].present?
    genre = Genre.find(params[:genre_id])
-   @items = genre.items.page(params[:page])
+   @items = genre.items.where(is_active: true).page(params[:page])
    unless @items.present?
     redirect_to items_path
    end
   else
-   @items = Item.page(params[:page])
+   @items = Item.where(is_active: true).page(params[:page])
   end
  end
 

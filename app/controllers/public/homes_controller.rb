@@ -1,7 +1,7 @@
 class Public::HomesController < ApplicationController
 
 def top
- @items = Item.limit(4)
+ @items = Item.where(is_active: true).limit(4)
  @genres = Genre.all
 end
 

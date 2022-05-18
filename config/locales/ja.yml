@@ -10,10 +10,10 @@ ja:
           new_address: "新しいお届け先"
       customer:
         is_active:
-          true: "有効"
-          false: "退会"
+          stay: "有効"
+          withdrawal: "退会"
       item:
         is_active:
-          true: "販売中"
-          false: "販売停止中"
+          sale: "販売中"
+          suspended: "販売停止中"
         

@@ -9,7 +9,7 @@
   <div class="col-sm-7 mt-3">
    <table class="table table-borderless">
     <tbody>
-     <%= form_with model: @customer, local:true do |f| %>
+     <%= form_with model: @customer, url: admin_customer_path(@customer), method: :patch, local:true do |f| %>
      <tr>
       <td><%= f.label :id, "会員ID"%></td>
       <td><%= @customer.id %></td>
@@ -43,10 +43,10 @@
      <tr>
       <td><%= f.label :is_active, "会員ステータス" %></td>
       <td>
-       <%= f.radio_button :is_active, Customer.is_actives.key(0) %>
-       <%= f.label :is_active, Customer.is_actives_i18n[:true] %>
-       <%= f.radio_button :is_active, Customer.is_actives.key(1) %>
-       <%= f.label :is_active, Customer.is_actives_i18n[:false] %>
+       <%= f.radio_button :is_active, Customer.is_actives.key(true) %>
+       <%= f.label :is_active, Customer.is_actives_i18n[:stay] %>
+       <%= f.radio_button :is_active, Customer.is_actives.key(false) %>
+       <%= f.label :is_active, Customer.is_actives_i18n[:withdrawal] %>
    　　</td>
      </tr>
      <tr>
