@@ -22,7 +22,7 @@
   </div>
  </div>
 
-<%= form_with model: @customer, local:true do |f| %>
+<%= form_with model: @customer, url: customers_path, local:true do |f| %>
  <div class="row">
   <div class="col-sm-7 mt-3">
    <table class="table table-borderless">
@@ -55,7 +55,7 @@
      </tr>
      <tr>
       <td></td>
-      <td><%= f.submit "編集内容を保存", url: customer_path(@customer.id), class: "btn btn-success btn-sm mt-2 mb-2" %></td>
+      <td><%= f.submit "編集内容を保存", class: "btn btn-success btn-sm mt-2 mb-2" %></td>
       <td><%= link_to "退会する", unsubscribe_path, class: "btn btn-danger btn-sm mt-2 mb-2" %></td>
      </tr>
 　  </tbody>

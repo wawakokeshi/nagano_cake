@@ -12,12 +12,12 @@ validates :email, presence:  { message: "正しく入力してください" }, u
 validates :first_name, :last_name, :last_name_kana, :first_name_kana, :address, presence: { message: "正しく入力してください" }
 
 VALID_TELEPHONE_NUMBER_REGEX = /\A0(\d{1}[-(]?\d{4}|\d{2}[-(]?\d{3}|\d{3}[-(]?\d{2}|\d{4}[-(]?\d{1})[-)]?\d{4}\z|\A0[5789]0[-]?\d{4}[-]?\d{4}\z/
-#validates :telephone_number, format: { with: VALID_TELEPHONE_NUMBER_REGEX }, presence: { message: "正しく入力してください" }
+validates :telephone_number, format: { with: VALID_TELEPHONE_NUMBER_REGEX }, presence: { message: "正しく入力してください" }
 
 VALID_POSTAL_CODE_REGEX = /\A\d{3}[-]?\d{4}\z/
 validates :postal_code, format: { with: VALID_POSTAL_CODE_REGEX }, presence: { message: "正しく入力してください" }
 
-enum is_active: { stay: true,  withdrawal: false }
+enum is_active: { 有効: true,  退会: false }
 
  def full_name
   self.last_name + self.first_name

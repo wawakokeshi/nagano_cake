@@ -26,7 +26,7 @@ protected
 def customer_state
   @customer = Customer.find_by(email: params[:customer][:email])
   return if !@customer
-  if @customer.valid_password?(params[:customer][:password]) && (@customer.is_active == true)
+  if @customer.valid_password?(params[:customer][:password]) && (@customer.is_active == "有効")
    redirect_to customer_path(current_customer.id)
   else
    render new_customer_registration_path
@@ -34,9 +34,9 @@ def customer_state
 end
 
 def reject_customer
-    @customer = Customer.find_by(email: params[:customer][:email])
+  @customer = Customer.find_by(email: params[:customer][:email])
     if @customer
-      if (@customer.valid_password?(params[:customer][:password]) && (@customer.is_active == false))
+      if @customer.valid_password?(params[:customer][:password]) && (@customer.is_active == "退会")
         flash[:error] = "退会済みです。"
         redirect_to new_customer_session_path
       end

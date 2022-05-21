@@ -3,15 +3,15 @@ class Public::CustomersController < ApplicationController
 before_action :correct_customer, only: [:edit, :update, :withdrawal]
 
 def show
- @customer = Customer.find(params[:id])
+ @customer = current_customer
 end
 
 def edit
- @customer = Customer.find(params[:id])
+ @customer = current_customer
 end
 
 def update
- @customer = Customer.find(params[:id])
+ @customer = current_customer
  if @customer.update(customer_params)
   redirect_to customer_path(@customer.id)
  else
@@ -20,11 +20,11 @@ def update
 end
 
 def unsubscribe
- @customer = Customer.find(params[:id])
+ @customer = current_customer
 end
 
 def withdrawal
- @customer = Customer.find(params[:id])
+ @customer = current_customer
  @customer.update(is_active: false)
  reset_session
  flash[:notice] = "退会処理を実行いたしました"
@@ -37,7 +37,7 @@ private
   end
 
   def correct_customer
-   @customer = Customer.find(params[:id])
+   @customer = current_customer
    redirect_to(customer_path(current_customer.id)) unless @customer == current_customer
   end
 
