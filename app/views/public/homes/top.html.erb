@@ -5,8 +5,8 @@
    <%= render 'admin/genres/genre', genre: @genre %>
   </div>
   <div class="col-sm-10 mt-5 d-flex justify-content-center">
-   <%#= flash[:notice] %>
-   <div class="jumbotron jumbotron-extend">
+   
+  <div class="jumbotron jumbotron-extend">
    ようこそ、ながのCAKEへ！<br>
    このサイトは、ケーキ販売のECサイトになります。<br>
    会員でない方も商品の閲覧はできますが、購入には会員登録が必要になります。
@@ -34,9 +34,9 @@
        <%= image_tag 'no_image', size: "200x100" %>
       <% end %>
      <br>
-     <%= link_to item.name, item_path(item.id) %>
+      <%= link_to item.name, item_path(item.id) %>
      <br>
-     <%= number_to_currency(item.with_tax_price, unit:"￥", strip_insignificant_zeros: true) %>
+      ￥<%= item.with_tax_price.to_s(:delimited) %>
      </td>
      <% end %>
     </tr>

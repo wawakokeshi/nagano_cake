@@ -13,8 +13,10 @@ end
 def update
  @customer = current_customer
  if @customer.update(customer_params)
-  redirect_to customer_path(@customer.id)
+  flash[:notice] = "会員情報を更新しました。"
+  redirect_to customers_path
  else
+  flash[:alert] = "情報を正しく入力してください。"
   render :edit
  end
 end
@@ -27,7 +29,7 @@ def withdrawal
  @customer = current_customer
  @customer.update(is_active: false)
  reset_session
- flash[:notice] = "退会処理を実行いたしました"
+ flash[:notice] = "退会処理を実行しました。"
  redirect_to root_path
 end
 

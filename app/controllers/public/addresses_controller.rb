@@ -16,6 +16,7 @@ def create
  @address = Address.new(address_params)
  @address.customer_id = current_customer.id
  if @address.save
+  flash[:notice] = "配送先を登録しました。"
   redirect_to addresses_path
  else
   @customer = current_customer
@@ -27,8 +28,10 @@ end
 def update
  @address = Address.find(params[:id])
  if @address.update(address_params)
+  flash[:notice] = "配送先情報を更新しました。"
   redirect_to addresses_path
  else
+  flash[:alert] = "情報を正しく入力してください。"
   @address = Address.find(params[:id])
   render :edit
  end
@@ -37,6 +40,7 @@ end
 def destroy
  address = Address.find(params[:id])
  address.delete
+ flash[:notice] = "配送先を削除しました。"
  redirect_to addresses_path
 end
 

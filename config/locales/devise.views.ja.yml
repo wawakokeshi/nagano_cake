@@ -1,0 +1,16 @@
+ja:
+  activerecord:
+    errors:
+      models:
+        customer:
+          attributes:
+            email:
+              blank: "が空になっています。"
+            password:
+              blank: "が空になっています。"
+            telephone_number:
+              invalid: "が正しく入力されていません。"
+              blank: "が空になっています。"
+            postal_code:
+              invalid: "が正しく入力されていません。"
+              blank: "が空になっています。"

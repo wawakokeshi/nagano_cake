@@ -1,4 +1,14 @@
 // Place all the styles related to the public/applications controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.notice {
+  background-color: green;
+  color: white;
+  text-align: center;
+}
 
+.alert {
+  background-color: red;
+  color: white;
+  text-align: center;
+}

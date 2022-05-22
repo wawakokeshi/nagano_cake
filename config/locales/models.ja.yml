@@ -1,0 +1,17 @@
+ja:
+  activerecord:
+    attributes:
+      address:
+        name: "宛名"
+        postal_code: "郵便番号"
+        address: "住所"
+      customer:
+        email: "メールアドレス"
+        first_name: "名前(名)"
+        last_name: "名前(姓)"
+        last_name_kana: "フリガナ(姓)"
+        first_name_kana: "フリガナ(名)"
+        postal_code: "郵便番号"
+        address: "住所"
+        telephone_number: "電話番号"
+        password: "パスワード"

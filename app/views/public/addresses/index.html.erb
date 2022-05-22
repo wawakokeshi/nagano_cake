@@ -8,9 +8,10 @@
    </table>
   </div>
  </div>
- 
+
  <div class="row">
   <div class="col-sm-12 mt-3">
+   <div class="error">
    <% if @address.errors.any? %>
     <%= @address.errors.count %>件のエラーが発生しました
     <ul>
@@ -19,6 +20,7 @@
      <% end %>
     </ul>
    <% end %>
+   </div>
   </div>
  </div>
 
@@ -40,7 +42,7 @@
 <% end %>
 
  <div class="row">
-  <div class="col-sm-6 mt-3">
+  <div class="col-sm-8 mt-3">
    <table class ="table table-bordered">
     <thead>
      <tr>

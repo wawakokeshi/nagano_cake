@@ -19,7 +19,7 @@
     <br>
     <%= link_to item.name, item_path(item.id) %>
     <br>
-    <%= number_to_currency(item.with_tax_price, unit:"￥", strip_insignificant_zeros: true) %>
+    ￥<%= item.with_tax_price.to_s(:delimited) %>
     </td>
     <% end %>
    </tr>
