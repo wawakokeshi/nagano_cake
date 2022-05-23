@@ -39,7 +39,10 @@
   <div class="col-sm-2 mt-3"></div>
   <div class="col-sm-2 mt-3 mx-left"><%= f.label :is_active, "販売ステータス" %></div>
   <div class="col-sm-8 mt-3 mx-left">
-  
+   <%= f.radio_button :is_active, Item.is_actives.key(true) %>
+   <%= f.label :is_active, Item.is_actives_i18n[:sale] %>
+   <%= f.radio_button :is_active, Item.is_actives.key(false) %>
+   <%= f.label :is_active, Item.is_actives_i18n[:suspended] %>
   </div>
  </div>
  <div class="row">
