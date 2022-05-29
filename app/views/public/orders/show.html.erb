@@ -40,7 +40,7 @@
      <tbody>
       <tr>
        <td class ="table-active">商品合計</td>
-       <td><%= @order.billing_amount.to_s(:delimited) %></td>
+       <td><%= (@order.billing_amount -= @order.postage).to_s(:delimited) %></td>
       </tr>
       <tr>
        <td class ="table-active">配送料</td>
@@ -70,11 +70,11 @@
      <tbody>
       <% @order_details.each do |order_detail| %>
        <tr>
-       <td><%= order_detail.item.name %></td>
-       <td><%= order_detail.price.to_s(:delimited) %></td>
-       <td><%= order_detail.amount %></td>
-       <td><%= (order_detail.price *=order_detail.amount).to_s(:delimited) %></td>
-      </tr>
+        <td><%= order_detail.item.name %></td>
+        <td><%= order_detail.price.to_s(:delimited) %></td>
+        <td><%= order_detail.amount %></td>
+        <td><%= (order_detail.price *=order_detail.amount).to_s(:delimited) %></td>
+        </tr>
       <% end %>
      </tbody>
     </table>

@@ -24,7 +24,11 @@
      </tr>
      <tr>
       <td><b>配送先</b></td>
-      <td><%= @order.address %></td>
+      <td>
+       〒<%= @order.postal_code %><br>
+       <%= @order.address %><br>
+       <%= @order.name %>
+      </td>
      </tr>
      <tr>
       <td><b>支払方法</b></td>
@@ -83,20 +87,18 @@
      <tr>
        <td><b>商品合計</b></td>
        <td>
-        <% @billing_amount = @order.billing_amount %>
-        <%= @billing_amount.to_s(:delimited) %>円
+        <%= (@order.billing_amount -= @order.postage).to_s(:delimited) %>円
        </td>
      </tr>
      <tr>
        <td><b>送料</b></td>
        <td>
-        <% @postage = @order.postage %>
-        <%= @postage %>円
+        <%= @order.postage %>円
        </td>
      </tr>
      <tr>
        <td><b>請求金額合計</b></td>
-       <td><%= (@billing_amount += @postage).to_s(:delimited) %>円</td>
+       <td><%= (@order.billing_amount += @order.postage).to_s(:delimited) %>円</td>
      </tr>
     </tbody>
    </table>

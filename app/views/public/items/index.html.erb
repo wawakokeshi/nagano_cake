@@ -11,13 +11,15 @@
    <tr class ="d-flex flex-wrap justify-content-around">
     <% @items.each do |item| %>
     <td>
-    <% if item.image.attached? %>
-     <%= image_tag item.image, size: "200x100" %>
-    <% else %>
-     <%= image_tag 'no_image', size: "200x100" %>
-    <% end %>
+     <%= link_to item_path(item.id) do %>
+      <% if item.image.attached? %>
+       <%= image_tag item.image, size: "200x100" %>
+      <% else %>
+       <%= image_tag 'no_image', size: "200x100" %>
+      <% end %>
+     <% end %>
     <br>
-    <%= link_to item.name, item_path(item.id) %>
+    <%= item.name %>
     <br>
     ￥<%= item.with_tax_price.to_s(:delimited) %>
     </td>

@@ -120,13 +120,13 @@ ActiveRecord::Schema.define(version: 2022_05_15_035101) do
     t.string "postal_code"
     t.string "address"
     t.string "name"
-    t.integer "postage", default: 500
+    t.integer "postage", default: 800
     t.integer "billing_amount"
     t.integer "payment_method", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "select_address", default: 0
     t.integer "is_active", default: 0
+    t.integer "select_address", default: 0
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
